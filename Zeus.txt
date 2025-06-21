@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# --- Pesan Sambutan Awal dari Zeus Coding ---
+echo "=================================================="
+echo "    Halo, Zeus Coding! Memulai Konfigurasi Termux "
+echo "    Oleh: ZEUS CODING                             "
+echo "=================================================="
+echo ""
+echo "Selamat datang, Sang Penguasa Kode! Mari kita siapkan lab coding-mu."
+echo "Waktu sekarang di Malaysia: $(date +"%A, %d %B %Y %H:%M:%S")"
+echo ""
+
+# --- 1. Update dan Upgrade Paket ---
+echo "--- Langkah 1/5: Zeus sedang memperbarui dan mengupgrade sistemmu..."
+pkg update -y
+pkg upgrade -y
+echo "--- Update dan upgrade berhasil diselesaikan oleh Zeus."
+echo ""
+
+# --- 2. Instalasi Paket Esensial ---
+echo "--- Langkah 2/5: Zeus menginstal alat-alat tempur pentingmu (git, python, nano, neofetch)..."
+pkg install git -y
+pkg install python -y
+pkg install nano -y
+pkg install neofetch -y
+pkg install figlet -y  # Untuk hiasan banner
+pkg install toilet -y  # Untuk hiasan banner
+echo "--- Instalasi paket selesai. Selamat datang di dunia coding, Zeus!"
+echo ""
+
+# --- 3. Setup Akses Penyimpanan ---
+# Penting: Ini akan memunculkan pop-up izin di layar ponselmu.
+# Pastikan kamu memberikan izin untuk akses penyimpanan!
+echo "--- Langkah 3/5: Zeus menyiapkan akses ke penyimpanan internal ponselmu..."
+echo "   (PENTING, Zeus! Akan ada pop-up izin, pastikan kamu IZINKAN!)"
+termux-setup-storage
+echo "--- Akses penyimpanan telah disiapkan oleh Zeus."
+echo ""
+
+# --- 4. Membuat Direktori Dasar untuk Zeus Coding ---
+echo "--- Langkah 4/5: Zeus membangun markas coding-mu (direktori dasar)..."
+mkdir -p ~/projects
+mkdir -p ~/scripts
+mkdir -p ~/documents
+echo "--- Markasmu siap! Zeus membuat: ~/projects, ~/scripts, ~/documents"
+echo ""
+
+# --- 5. Memasang Hiasan Zeus Coding (Banner Terminal) + Facebook Link ---
+echo "--- Langkah 5/5: Zeus menghias terminalmu dengan tanda tangan 'ZEUS CODING' dan link Facebookmu..."
+
+# Hapus baris hiasan lama jika ada untuk menghindari duplikasi
+sed -i '/## Custom Zeus Coding Banner Start ##/,/## Custom Zeus Coding Banner End ##/d' ~/.bashrc
+
+# Tambahkan hiasan baru ke .bashrc
+cat << 'EOF' >> ~/.bashrc
+
+## Custom Zeus Coding Banner Start ##
+clear
+# Kustomisasi hiasan Zeus Coding
+# Warna: black, red, green, yellow, blue, magenta, cyan, white
+# Filter Toilet: metal, gay, none
+
+echo ""
+figlet -f standard "ZEUS" | toilet --filter metal --font mono1 -f term --gay
+figlet -f standard "CODING" | toilet --filter metal --font mono1 -f term --gay
+echo ""
+echo "================================================="
+echo "  Selamat Datang, Sang Penguasa Kode!"
+echo "  Dipersembahkan oleh: ZEUS CODING"
+echo "  Waktu Saat Ini: $(date +"%A, %d %B %Y %H:%M:%S")"
+echo "================================================="
+echo "  Jangan lupa follow akun Facebook Zeus Coding:"
+echo "  https://www.facebook.com/share/19EornyQgz/"
+echo "================================================="
+echo ""
+## Custom Zeus Coding Banner End ##
+EOF
+
+echo "--- Hiasan Zeus Coding berhasil dipasang!"
+echo ""
+
+# --- Pesan Penutup dari Zeus Coding ---
+echo "=================================================="
+echo "    Setup Lengkap! Termux siap untuk Zeus Coding! "
+echo "=================================================="
+echo "Selamat berkreasi, Zeus!"
+echo "Untuk melihat hiasanmu, TUTUP Termux dan BUKA KEMBALI."
+echo "Kamu bisa mulai dengan:"
+echo "  - cd ~/projects"
+echo "  - python --version"
+echo "  - git --version"
+echo "Jika ingin mengubah hiasan, edit file ~/.bashrc dengan 'nano ~/.bashrc'."
+echo ""
+
+touch ~/.bashrc
